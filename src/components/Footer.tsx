@@ -1,6 +1,6 @@
 import React from 'react';
 import { Crown, MessageCircle, Send } from 'lucide-react';
-import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_INTL, getWhatsAppUrl } from '../utils/contactLinks';
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_INTL, getWhatsAppUrl, getTelegramUrl } from '../utils/contactLinks';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -34,10 +34,12 @@ export const Footer: React.FC = () => {
               <span>WhatsApp: {CONTACT_PHONE_INTL}</span>
             </a>
             <a
-              href="#contact"
+              href={getTelegramUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold px-4 py-2.5 rounded-xl transition-colors"
             >
-              <Send className="w-4 h-4" />
+              <Send className="w-4 h-4 text-sky-400" />
               <span>Telegram: {CONTACT_PHONE_DISPLAY}</span>
             </a>
           </div>

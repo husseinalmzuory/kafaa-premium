@@ -4,7 +4,10 @@ import {
   CONTACT_PHONE_INTL,
   CONTACT_PHONE_RAW_INTL,
   getWhatsAppUrl,
+  getTelegramUrl,
   TELEGRAM_PHONE_DISPLAY,
+  TELEGRAM_PHONE_INTL,
+  TELEGRAM_URL,
 } from '../utils/contactLinks';
 
 export function runTests() {
@@ -75,6 +78,7 @@ export function runTests() {
     expect(CONTACT_PHONE_INTL).toBe('+9647518464843');
     expect(CONTACT_PHONE_RAW_INTL).toBe('9647518464843');
     expect(TELEGRAM_PHONE_DISPLAY).toBe('07518464843');
+    expect(TELEGRAM_PHONE_INTL).toBe('+9647518464843');
   });
 
   test('getWhatsAppUrl: default general message when no plan selected', () => {
@@ -89,6 +93,12 @@ export function runTests() {
     expect(url).toContain('https://wa.me/9647518464843');
     expect(url).toContain(encodeURIComponent('90 يوماً'));
     expect(url).toContain(encodeURIComponent('20,000 د.ع'));
+  });
+
+  test('getTelegramUrl: returns official direct Telegram URL with international phone number', () => {
+    const url = getTelegramUrl();
+    expect(url).toBe('https://t.me/+9647518464843');
+    expect(TELEGRAM_URL).toBe('https://t.me/+9647518464843');
   });
 
   return results;

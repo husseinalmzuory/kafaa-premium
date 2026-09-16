@@ -16,9 +16,12 @@ export function getWhatsAppUrl(selectedPlan?: Plan | null): string {
 }
 
 /**
- * معلومات Telegram الرسمية
- * تيليجرام لا يوفر فتح محادثة خاصة برقم الهاتف فقط بدون تخزين جهة الاتصال أو معرف مستخدم.
- * لذلك نعرض الرقم بشكل واضح مع ميزة النسخ المباشر.
+ * رابط Telegram الرسمي لفتح محادثة مباشرة باستخدام الرقم الدولي
  */
 export const TELEGRAM_PHONE_DISPLAY = '07518464843';
 export const TELEGRAM_PHONE_INTL = '+9647518464843';
+export const TELEGRAM_URL = `https://t.me/${CONTACT_PHONE_INTL}`;
+
+export function getTelegramUrl(): string {
+  return TELEGRAM_URL;
+}

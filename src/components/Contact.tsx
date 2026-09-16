@@ -4,6 +4,7 @@ import {
   CONTACT_PHONE_DISPLAY,
   CONTACT_PHONE_INTL,
   getWhatsAppUrl,
+  getTelegramUrl,
   TELEGRAM_PHONE_DISPLAY,
 } from '../utils/contactLinks';
 import {
@@ -32,6 +33,7 @@ export const Contact: React.FC<ContactProps> = ({ selectedPlan }) => {
   };
 
   const whatsappUrl = getWhatsAppUrl(selectedPlan);
+  const telegramUrl = getTelegramUrl();
 
   return (
     <section id="contact" className="py-16 md:py-24 bg-white border-t border-slate-200/80">
@@ -126,15 +128,17 @@ export const Contact: React.FC<ContactProps> = ({ selectedPlan }) => {
               </div>
             </div>
 
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full bg-white text-emerald-800 hover:bg-emerald-50 font-bold py-3.5 px-4 rounded-xl text-center text-sm transition-all shadow-sm flex items-center justify-center gap-2 active:scale-[0.99]"
-            >
-              <MessageCircle className="w-4 h-4" />
-              <span>تواصل عبر WhatsApp</span>
-            </a>
+            <div>
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-white text-emerald-800 hover:bg-emerald-50 font-bold py-3.5 px-4 rounded-xl text-center text-sm transition-all shadow-sm flex items-center justify-center gap-2 active:scale-[0.99]"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>تواصل عبر WhatsApp</span>
+              </a>
+            </div>
           </div>
 
           {/* Telegram Card */}
@@ -148,22 +152,34 @@ export const Contact: React.FC<ContactProps> = ({ selectedPlan }) => {
               </div>
               <h3 className="text-xl font-extrabold text-white mb-2">Telegram</h3>
               <p className="text-xs text-sky-50 leading-relaxed mb-4">
-                راسلنا على Telegram عبر رقم الهاتف المعتمد للاشتراك.
+                فتح محادثة مباشرة في تطبيق Telegram باستخدام رقم الهاتف المعتمد.
               </p>
               <div className="text-xs font-mono font-bold bg-sky-700/60 text-white px-3 py-1.5 rounded-lg inline-block mb-6" dir="ltr">
                 {TELEGRAM_PHONE_DISPLAY}
               </div>
             </div>
 
-            <div className="space-y-2">
-              <button
-                type="button"
-                onClick={handleCopyPhone}
-                className="w-full bg-white text-sky-800 hover:bg-sky-50 font-bold py-3 px-4 rounded-xl text-center text-sm transition-all shadow-sm flex items-center justify-center gap-2 active:scale-[0.99]"
+            <div className="space-y-2.5">
+              <a
+                href={telegramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-white text-sky-800 hover:bg-sky-50 font-bold py-3.5 px-4 rounded-xl text-center text-sm transition-all shadow-sm flex items-center justify-center gap-2 active:scale-[0.99]"
               >
-                {copied ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
-                <span>{copied ? 'تم نسخ الرقم بنجاح!' : 'نسخ رقم Telegram'}</span>
-              </button>
+                <Send className="w-4 h-4" />
+                <span>تواصل عبر Telegram</span>
+              </a>
+
+              <div className="text-center">
+                <button
+                  type="button"
+                  onClick={handleCopyPhone}
+                  className="inline-flex items-center gap-1.5 text-xs text-sky-100 hover:text-white underline underline-offset-4 py-1 px-2 transition-colors cursor-pointer"
+                >
+                  {copied ? <Check className="w-3.5 h-3.5 text-emerald-300" /> : <Copy className="w-3.5 h-3.5" />}
+                  <span>{copied ? 'تم نسخ الرقم بنجاح!' : 'نسخ رقم الهاتف'}</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
