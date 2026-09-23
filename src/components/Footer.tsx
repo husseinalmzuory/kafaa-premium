@@ -45,11 +45,17 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Disclaimer & Copyright */}
+        {/* Disclaimer, privacy & copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-right text-xs text-slate-500">
           <p>
             تطبيق كفاءة هو تطبيق تعليمي مستقل للتحضير لاختبار الكفاءة الوطني.
           </p>
+          <a
+            href="/kafaa-premium/privacy/"
+            className="text-slate-300 hover:text-white underline underline-offset-4 transition-colors"
+          >
+            سياسة الخصوصية | Privacy Policy
+          </a>
           <p dir="ltr">
             © {currentYear} Kafaa. All rights reserved.
           </p>
