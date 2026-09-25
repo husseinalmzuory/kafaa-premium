@@ -47,28 +47,30 @@ export function runTests() {
   }
 
   // 1. Plan Structure & Pricing Tests
-  test('PLANS: contains exactly 4 commercial plans', () => {
-    expect(PLANS.length).toBe(4);
+  test('PLANS: contains exactly 3 commercial plans', () => {
+    expect(PLANS.length).toBe(3);
   });
 
-  test('PLANS: verify exact durations (30, 90, 180, 365)', () => {
+  test('PLANS: verify monthly durations and fixed season end date', () => {
     const durations = PLANS.map((p) => p.durationDays);
-    expect(JSON.stringify(durations)).toBe(JSON.stringify([30, 90, 180, 365]));
+    expect(JSON.stringify(durations)).toBe(JSON.stringify([30, 90, null]));
+    expect(PLANS.find((p) => p.id === 'season_2027')?.endsAt).toBe('2027-08-01');
+    expect(PLANS.find((p) => p.id === 'season_2027')?.durationArabic).toBe('حتى 1/8/2027');
   });
 
-  test('PLANS: verify exact prices in IQD (10000, 20000, 30000, 40000)', () => {
+  test('PLANS: verify exact prices in IQD (5000, 10000, 20000)', () => {
     const prices = PLANS.map((p) => p.priceIqd);
-    expect(JSON.stringify(prices)).toBe(JSON.stringify([10000, 20000, 30000, 40000]));
+    expect(JSON.stringify(prices)).toBe(JSON.stringify([5000, 10000, 20000]));
   });
 
-  test('PLANS: plan 365 is highlighted as best value', () => {
-    const plan365 = PLANS.find((p) => p.durationDays === 365);
-    expect(plan365?.isPopular).toBe(true);
-    expect(plan365?.badge).toBe('أفضل قيمة');
+  test('PLANS: season plan is highlighted as best value', () => {
+    const seasonPlan = PLANS.find((p) => p.id === 'season_2027');
+    expect(seasonPlan?.isPopular).toBe(true);
+    expect(seasonPlan?.badge).toBe('أفضل قيمة');
   });
 
   test('PLANS: no custom or lifetime plans exist', () => {
-    const hasLifetime = PLANS.some((p) => p.durationDays === null || p.id.includes('life'));
+    const hasLifetime = PLANS.some((p) => p.id.includes('life'));
     expect(hasLifetime).toBe(false);
   });
 
@@ -92,7 +94,7 @@ export function runTests() {
     const url = getWhatsAppUrl(plan90);
     expect(url).toContain('https://wa.me/9647518464843');
     expect(url).toContain(encodeURIComponent('90 يوماً'));
-    expect(url).toContain(encodeURIComponent('20,000 د.ع'));
+    expect(url).toContain(encodeURIComponent('10,000 د.ع'));
   });
 
   test('getTelegramUrl: returns official direct Telegram URL with international phone number', () => {
