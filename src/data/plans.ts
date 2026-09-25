@@ -1,6 +1,7 @@
 export interface Plan {
   id: string;
-  durationDays: number;
+  durationDays: number | null;
+  endsAt?: string;
   nameArabic: string;
   durationArabic: string;
   priceIqd: number;
@@ -21,41 +22,32 @@ export const PLANS: Plan[] = [
     durationDays: 30,
     nameArabic: 'شهر',
     durationArabic: '30 يوماً',
-    priceIqd: 10000,
-    formattedPrice: '10,000',
+    priceIqd: 5000,
+    formattedPrice: '5,000',
     description: 'مثالية للتحضير السريع والمراجعة المكثفة قبل موعد الامتحان.',
-    dailyRateText: '333 د.ع / يوم تقريباً',
+    dailyRateText: '167 د.ع / يوم تقريباً',
   },
   {
     id: 'plan_90',
     durationDays: 90,
     nameArabic: '3 أشهر',
     durationArabic: '90 يوماً',
+    priceIqd: 10000,
+    formattedPrice: '10,000',
+    description: 'الخيار المتوازن للدراسة والاستعداد المنظم على مدى ثلاثة أشهر.',
+    dailyRateText: '111 د.ع / يوم تقريباً',
+  },
+  {
+    id: 'season_2027',
+    durationDays: null,
+    endsAt: '2027-08-01',
+    nameArabic: 'الموسم الكامل',
+    durationArabic: 'حتى 1/8/2027',
     priceIqd: 20000,
     formattedPrice: '20,000',
-    description: 'الخيار المتوازن والأكثر ملاءمة للدراسة والاستعداد المنظم.',
-    dailyRateText: '222 د.ع / يوم تقريباً',
-  },
-  {
-    id: 'plan_180',
-    durationDays: 180,
-    nameArabic: '6 أشهر',
-    durationArabic: '180 يوماً',
-    priceIqd: 30000,
-    formattedPrice: '30,000',
-    description: 'تتيح وقتاً وافياً للتدريب على جميع الأسئلة والامتحانات السابقة.',
-    dailyRateText: '166 د.ع / يوم تقريباً',
-  },
-  {
-    id: 'plan_365',
-    durationDays: 365,
-    nameArabic: 'سنة كاملة',
-    durationArabic: '365 يوماً',
-    priceIqd: 40000,
-    formattedPrice: '40,000',
     isPopular: true,
     badge: 'أفضل قيمة',
-    description: 'الخيار الأوفر والأطول مدة للحصول على كامل المزايا بأفضل تكلفة.',
-    dailyRateText: '110 د.ع / يوم تقريباً',
+    description: 'اشتراك يغطي موسم الاختبارات كاملًا حتى 1/8/2027 بأفضل تكلفة.',
+    dailyRateText: 'صالح حتى نهاية الموسم',
   },
 ];
