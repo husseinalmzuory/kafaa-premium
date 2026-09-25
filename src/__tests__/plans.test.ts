@@ -58,9 +58,13 @@ export function runTests() {
     expect(PLANS.find((p) => p.id === 'season_2027')?.durationArabic).toBe('حتى 1/8/2027');
   });
 
-  test('PLANS: verify exact prices in IQD (5000, 10000, 20000)', () => {
+  test('PLANS: verify discounted and original prices in IQD', () => {
     const prices = PLANS.map((p) => p.priceIqd);
+    const originalPrices = PLANS.map((p) => p.originalPriceIqd);
+    const discounts = PLANS.map((p) => p.discountPercent);
     expect(JSON.stringify(prices)).toBe(JSON.stringify([5000, 10000, 20000]));
+    expect(JSON.stringify(originalPrices)).toBe(JSON.stringify([10000, 20000, 40000]));
+    expect(JSON.stringify(discounts)).toBe(JSON.stringify([50, 50, 50]));
   });
 
   test('PLANS: season plan is highlighted as best value', () => {
