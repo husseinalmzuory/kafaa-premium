@@ -6,6 +6,9 @@ export interface Plan {
   durationArabic: string;
   priceIqd: number;
   formattedPrice: string;
+  originalPriceIqd: number;
+  formattedOriginalPrice: string;
+  discountPercent: number;
   isPopular?: boolean;
   badge?: string;
   description: string;
@@ -24,6 +27,9 @@ export const PLANS: Plan[] = [
     durationArabic: '30 يوماً',
     priceIqd: 5000,
     formattedPrice: '5,000',
+    originalPriceIqd: 10000,
+    formattedOriginalPrice: '10,000',
+    discountPercent: 50,
     description: 'مثالية للتحضير السريع والمراجعة المكثفة قبل موعد الامتحان.',
     dailyRateText: '167 د.ع / يوم تقريباً',
   },
@@ -34,6 +40,9 @@ export const PLANS: Plan[] = [
     durationArabic: '90 يوماً',
     priceIqd: 10000,
     formattedPrice: '10,000',
+    originalPriceIqd: 20000,
+    formattedOriginalPrice: '20,000',
+    discountPercent: 50,
     description: 'الخيار المتوازن للدراسة والاستعداد المنظم على مدى ثلاثة أشهر.',
     dailyRateText: '111 د.ع / يوم تقريباً',
   },
@@ -45,6 +54,9 @@ export const PLANS: Plan[] = [
     durationArabic: 'حتى 1/8/2027',
     priceIqd: 20000,
     formattedPrice: '20,000',
+    originalPriceIqd: 40000,
+    formattedOriginalPrice: '40,000',
+    discountPercent: 50,
     isPopular: true,
     badge: 'أفضل قيمة',
     description: 'اشتراك يغطي موسم الاختبارات كاملًا حتى 1/8/2027 بأفضل تكلفة.',
