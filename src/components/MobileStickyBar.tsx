@@ -16,7 +16,7 @@ export const MobileStickyBar: React.FC<MobileStickyBarProps> = ({ selectedPlan }
             {selectedPlan ? selectedPlan.nameArabic : 'Kafaa Premium'}
           </span>
           <span className="text-xs font-black text-slate-900">
-            {selectedPlan ? `${selectedPlan.formattedPrice} د.ع` : 'ابتداءً من 10,000 د.ع'}
+            {selectedPlan ? `${selectedPlan.formattedPrice} د.ع` : 'ابتداءً من 5,000 د.ع'}
           </span>
         </div>
 
