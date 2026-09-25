@@ -23,7 +23,7 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectPlan, selectedPlan }) 
         <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-1.5 bg-amber-100 text-amber-900 text-xs font-bold px-3 py-1 rounded-full mb-3">
             <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-            <span>خيارات اشتراك مرنة</span>
+            <span>خصم 50% على جميع الباقات</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
             باقات <span className="text-amber-600">Kafaa Premium</span>
@@ -67,6 +67,14 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectPlan, selectedPlan }) 
 
                   {/* Price */}
                   <div className="mb-4 pb-4 border-b border-slate-100">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-sm font-bold text-slate-400 line-through decoration-2">
+                        {plan.formattedOriginalPrice} د.ع
+                      </span>
+                      <span className="inline-flex items-center rounded-full bg-rose-100 px-2 py-0.5 text-[11px] font-extrabold text-rose-700">
+                        خصم {plan.discountPercent}%
+                      </span>
+                    </div>
                     <div className="flex items-baseline gap-1">
                       <span className="text-3xl font-black text-slate-950 tracking-tight">
                         {plan.formattedPrice}
